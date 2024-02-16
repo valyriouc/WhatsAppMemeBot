@@ -26,8 +26,8 @@ def to_link_dictionary(links: list[str]):
         res[key] = split[0]
     return res 
 
-def main():
-    url = "https://www.reddit.com/r/programmingmemes/?rdt=42097"
+def main(subreddit: str, storefile: str):
+    url = f"https://www.reddit.com/r/{subreddit}/"
     browser = webdriver.Firefox(options=Options())
     browser.get(url)
         
@@ -35,8 +35,8 @@ def main():
 
     linkCollection = [to_link_dictionary(i) for i in get_links(browser)]
 
-    with open("res.json", "w") as fobj:
+    with open(storefile, "a") as fobj:
         json.dump(linkCollection, fobj)
 
 if __name__ == "__main__":
-    main()
+    main("programmingmemes", "res.json")
