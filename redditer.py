@@ -7,7 +7,7 @@ import json
 import os 
 
 def prepare_reddit(browser: webdriver.Firefox, scrollDownCount: int):
-    for i in range(0, scrollDownCount):
+    for _ in range(0, scrollDownCount):
         browser.execute_script("window.scrollTo(0, document.body.scrollHeight)")
         time.sleep(1)
     
@@ -52,4 +52,5 @@ def main(browser: webdriver.Firefox, subreddit: str, storefile: str):
 
 if __name__ == "__main__":
     browser = webdriver.Firefox(options=Options())
-    main(browser, "programmingmemes", "res.json")
+    main(browser, "programmingmemes", "memes.json")
+    browser.quit()
