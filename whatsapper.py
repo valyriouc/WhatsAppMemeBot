@@ -6,15 +6,12 @@ import time
 import json
 
 def main(browser: webdriver.Firefox, contact: str):
-    # URL for WhatsApp Web
     url = 'https://web.whatsapp.com/'
 
     browser.get(url)
 
-    # Wait for the user to scan the QR code and log in
     input("Press Enter after scanning QR code and logging in...")
 
-    # Find the search input field
     while True:
         try:
             search_box = browser.find_element(by=By.XPATH, value='//div[contains(@title, "Sucheingabefeld")]')
