@@ -7,23 +7,17 @@ import json
 
 def main(browser: webdriver.Firefox, contact: str):
     url = 'https://web.whatsapp.com/'
-
     browser.get(url)
-
     input("Press Enter after scanning QR code and logging in...")
 
     while True:
         try:
             search_box = browser.find_element(by=By.XPATH, value='//div[contains(@title, "Sucheingabefeld")]')
-
             contact_name = contact 
             for e in contact_name:
                 search_box.send_keys(e)
-
             search_box.send_keys(Keys.ENTER)
-
             time.sleep(1)
-
             input_box = browser.find_element(by=By.XPATH, value='//div[contains(@title, "Gib eine Nachricht ein.")]')
 
             memes = None
